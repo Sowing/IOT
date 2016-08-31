@@ -1,0 +1,32 @@
+DEBUG:boto:Using access key found in config file.
+DEBUG:boto:Using secret key found in config file.
+DEBUG:boto:Method: GET
+DEBUG:boto:Path: /
+DEBUG:boto:Data: 
+DEBUG:boto:Headers: {}
+DEBUG:boto:Host: sns.us-east-1.amazonaws.com
+DEBUG:boto:Port: 443
+DEBUG:boto:Params: {'Endpoint': '16468120059', 'Protocol': 'sms', 'Version': '2010-03-31', 'Action': 'Subscribe', 'ContentType': 'JSON', 'TopicArn': 'arn:aws:sns:us-east-1:850507712104:Demo_Topic'}
+DEBUG:boto:establishing HTTPS connection: host=sns.us-east-1.amazonaws.com, kwargs={'port': 443, 'timeout': 70}
+DEBUG:boto:Token: None
+DEBUG:boto:CanonicalRequest:
+GET
+/
+Action=Subscribe&ContentType=JSON&Endpoint=16468120059&Protocol=sms&TopicArn=arn%3Aaws%3Asns%3Aus-east-1%3A850507712104%3ADemo_Topic&Version=2010-03-31
+host:sns.us-east-1.amazonaws.com
+x-amz-date:20160216T233800Z
+
+host;x-amz-date
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+DEBUG:boto:StringToSign:
+AWS4-HMAC-SHA256
+20160216T233800Z
+20160216/us-east-1/sns/aws4_request
+7461ae87d2b9d1b3be9ff29ef89172aa7157ac620cfa5283c203240202134c05
+DEBUG:boto:Signature:
+0695a82a0b59db912acd22e4a606da596d5b82e738e1e8a2c07c9006ec59e1de
+DEBUG:boto:Final headers: {'Content-Length': '0', 'Host': u'sns.us-east-1.amazonaws.com', 'Authorization': u'AWS4-HMAC-SHA256 Credential=AKIAIZWBBFIDDSWVJU2A/20160216/us-east-1/sns/aws4_request,SignedHeaders=host;x-amz-date,Signature=0695a82a0b59db912acd22e4a606da596d5b82e738e1e8a2c07c9006ec59e1de', 'X-Amz-Date': '20160216T233800Z', 'User-Agent': 'Boto/2.39.0 Python/2.7.3 Linux/3.10.17-poky-edison+'}
+DEBUG:boto:wrapping ssl socket; CA certificate file=/usr/lib/python2.7/site-packages/boto/cacerts/cacerts.txt
+DEBUG:boto:validating server certificate: hostname=sns.us-east-1.amazonaws.com, certificate hosts=['sns.us-east-1.amazonaws.com']
+DEBUG:boto:Response headers: [('x-amzn-requestid', 'c8bf76af-7e7e-52cc-9f0e-3992cb66fc81'), ('date', 'Tue, 16 Feb 2016 23:38:00 GMT'), ('content-length', '156'), ('content-type', 'application/json')]
+DEBUG:boto:{"SubscribeResponse":{"ResponseMetadata":{"RequestId":"c8bf76af-7e7e-52cc-9f0e-3992cb66fc81"},"SubscribeResult":{"SubscriptionArn":"pending confirmation"}}}

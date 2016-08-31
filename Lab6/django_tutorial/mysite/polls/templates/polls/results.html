@@ -1,0 +1,67 @@
+<h1>Source city {{ question.question_text }}</h1><br />
+<li>Location of city is {{ question.loc }}</li><br />
+<!--<li>Latitude is {{ question.latitude }}</li><br />
+<li>Longitude is{{ question.longitude }}</li><br />-->
+<li>The temperature at {{question.question_text}} is {{ question.weather }}</li><br />
+<ul>
+{% for choice in question.choice_set.all %}
+<h1>Destination city {{ choice.choice_text }}</h1><br />
+<li>Location of city is {{ choice.loc }}</li><br />
+<!--<li>Latitude is {{ choice.latitude }}</li><br />
+<li>Longitude is{{ choice.longitude }}</li><br />-->
+<li>The temperature at {{choice.choice_text}} is {{ choice.weather }}</li><br />
+{% endfor %}
+</ul>
+
+
+
+
+<a href="{% url 'polls:detail' question.id %}">Select destination again?</a>
+<a href="http://ec2-54-165-4-254.compute-1.amazonaws.com:8000/polls/">Travel again?</a>
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #map {
+        width: 500px;
+        height: 400px;
+      }
+    </style>
+  </head>
+  <body>
+
+
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        var mapDiv = document.getElementById('map');
+        var map = new google.maps.Map(mapDiv, {
+          center: {lat: 44.540, lng: -78.546},
+          zoom: 8
+        });
+        directionsDisplay.setMap(map);
+
+              calculateAndDisplayRoute(directionsService, directionsDisplay);
+
+      }
+      function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+        directionsService.route({
+          origin: "{{ question.question_text }}",
+          destination: "NewYork,USA",
+          travelMode: google.maps.TravelMode.DRIVING
+        }, function(response, status) {
+          if (status === google.maps.DirectionsStatus.OK) {
+            directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+    	});
+    }
+    </script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpb95qrwM6oFCh3MkhI5QuCVEwaqdVD-g&callback=initMap">
+    </script>
+  </body>
+</html>

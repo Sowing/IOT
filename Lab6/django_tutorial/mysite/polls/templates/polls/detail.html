@@ -1,0 +1,16 @@
+
+<h1>Source city {{ question.question_text }}</h1><br />
+<li>Location of city is {{ question.loc }}</li><br />
+<!--<li>Latitude is {{ question.latitude }}</li><br />
+<li>Longitude is{{ question.longitude }}</li><br />-->
+<li>The temperature at {{question.question_text}} is {{ question.weather }}</li><br />
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'polls:vote' question.id %}" method="post">
+{% csrf_token %}
+{% for choice in question.choice_set.all %}
+    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
+{% endfor %}
+<input type="submit" value="Go" />
+</form>

@@ -1,0 +1,5 @@
+850507712104
+us-east-1:52cd1b82-3e32-413d-8522-ac5fb65f1328
+arn:aws:iam::850507712104:role/Cognito_EdisonAppUnauth_Role
+topic = snsResource(arn:aws:sns:us-east-1:850507712104:mtaSub)
+snsClient.publish(TopicArn=<arn:aws:sns:us-east-1:850507712104:mtaSub, Message='You have subscribed to mta Data', Suject = 'MTAFEED')
